@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     phone: {
       type: DataTypes.INTEGER,
+      unique: true,
       validate:{
           isNumeric: {
               msg: "the phone must be numeric"
