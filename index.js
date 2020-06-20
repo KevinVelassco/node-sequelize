@@ -4,6 +4,7 @@ const handlingErrors = require("./middlewares/handling-errors");
 const users = require("./routes/users");
 const tasks = require("./routes/tasks");
 const projects = require("./routes/projects");
+const categories = require("./routes/categories");
 const app = express();
 
 //settings
@@ -18,6 +19,7 @@ app.use(morgan("tiny"));
 app.use("/users", users);
 app.use("/tasks", tasks);
 app.use("/projects", projects);
+app.use("/categories", categories);
 
 //middleware errors
 app.use(handlingErrors);
