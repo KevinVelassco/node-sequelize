@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
+        notNull: {
+          msg: 'The title field is required'
+        },
         len: {
           args: [5, 20],
           msg: "The title must have between 5 and 20 characters."
@@ -13,7 +16,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'The description field is required'
+        },
+        notEmpty: {
+          msg: "The description field is required"
+        },
+        len: {
+          args: [20,undefined],
+          msg: "The description must have at least 20 characters"
+        }
+      }
     },
     state: {
         type: DataTypes.BOOLEAN,
