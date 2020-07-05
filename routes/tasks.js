@@ -2,7 +2,7 @@ const express = require("express");
 const { Task } = require("../models");
 const paginate = require("../paginate/paginate");
 const { handlingRequests } = require("../middlewares/handling-requests");
-const requestDataAllowed = ["title", "description", "state"];
+const requestDataAllowed = ["title", "description", "state", "projectId"];
 const router = express.Router();
 
 router.get("/", (req, res) => {

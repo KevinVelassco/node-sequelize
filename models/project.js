@@ -34,10 +34,35 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true
+    },
+    categoryId:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'The category field is required'
+        },
+        notEmpty: {
+          msg: "The category field is required"
+        }
+      }      
     }
   }, {});
   Project.associate = function(models) {
-    // associations can be defined here
+    Project.hasMany(models.Task, {
+      foreignKey: "projectId",
+      as: "tasks"
+    });
+
+    Project.belongsTo(models.Category, {
+      foreignKey: "categoryId"
+    });
+
+    Project.belongsToMany(models.User,{
+      through: "userprojects",
+      as: "users",
+      foreignKey: "projectId"
+    })
   };
   return Project;
 };

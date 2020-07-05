@@ -34,10 +34,24 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true
+    },
+    projectId:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'The project field is required'
+        },
+        notEmpty: {
+          msg: "The project field is required"
+        }
+      }      
     }
   }, {});
   Task.associate = function (models) {
-    // associations can be defined here
+    Task.belongsTo(models.Project, {
+      foreignKey: "projectId"
+    });
   };
   return Task;
 };
