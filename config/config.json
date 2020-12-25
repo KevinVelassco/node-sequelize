@@ -10,17 +10,17 @@
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "database": "dbsequelize",
+    "host": "localhost",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
+    "username": "xqtztddkxqbiki",
+    "password": "47be9f4c485ced9cd620aa33397febbdac193f848d11d23d66dda527f80df6d7",
+    "database": "d248gh654bjk4u",
+    "host": "ec2-34-237-247-76.compute-1.amazonaws.com",
+    "dialect": "postgres",
     "operatorsAliases": false
   }
 }

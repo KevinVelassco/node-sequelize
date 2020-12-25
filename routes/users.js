@@ -6,7 +6,7 @@ const requestDataAllowed = ["name","email","identification","phone"];
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    const { page } = req.query; 
+    const { page } = req.query;
     paginate(User, page, {
         order: [["id","DESC"]]
     })

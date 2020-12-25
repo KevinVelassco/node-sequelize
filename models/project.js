@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: "The category field is required"
         }
-      }      
+      }
     }
   }, {});
   Project.associate = function(models) {

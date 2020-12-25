@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
           args: [20,undefined],
           msg: "The description must have at least 20 characters"
         }
-      }      
+      }
     },
     alias: {
       type: DataTypes.STRING,
@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: "The color field is required"
         }
-      }      
+      }
     },
   }, {});
   Category.associate = function(models) {

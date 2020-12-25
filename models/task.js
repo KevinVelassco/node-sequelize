@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: "The project field is required"
         }
-      }      
+      }
     }
   }, {});
   Task.associate = function (models) {

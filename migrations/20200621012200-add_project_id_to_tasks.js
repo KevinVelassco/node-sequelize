@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {    
-    return queryInterface.addColumn("tasks", "projectId", {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.addColumn("Tasks", "projectId", {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
         model: {
-          tableName: "projects"
+          tableName: "Projects"
         },
         key: "id"
       }
@@ -15,6 +15,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn("tasks", "projectId");
+    return queryInterface.removeColumn("Tasks", "projectId");
   }
 };

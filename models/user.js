@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
           len: {
               args: [{min:8, max: undefined}],
               msg: "The name must have at least 8 characters"
-          }            
+          }
       }
     },
     email:{
       type: DataTypes.STRING,
       unique: true,
-      allowNull: false,      
+      allowNull: false,
       validate: {
           notNull: {
             msg: 'The emial field is required'
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
           },
           isNumeric: {
               msg: "the identification must be numeric"
-          }            
+          }
       }
     },
     phone: {
@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       validate:{
           isNumeric: {
               msg: "the phone must be numeric"
-          } 
+          }
       }
     }
   }, {});
