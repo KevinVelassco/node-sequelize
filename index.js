@@ -1,4 +1,5 @@
-const  express = require("express");
+const express = require("express");
+var cors = require('cors');
 const morgan = require("morgan");
 const handlingErrors = require("./middlewares/handling-errors");
 const users = require("./routes/users");
@@ -11,6 +12,7 @@ const app = express();
 app.set("port", process.env.PORT || 3000);
 
 //middlewares
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan("tiny"));
