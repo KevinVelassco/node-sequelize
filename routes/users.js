@@ -2,28 +2,28 @@ const express = require("express");
 const { User } = require("../models");
 const { handlingRequests } = require("../middlewares/handling-requests");
 const paginate = require("../paginate/paginate");
-const requestDataAllowed = ["name","email","identification","phone"];
+const requestDataAllowed = ["name", "email", "identification", "phone"];
 const router = express.Router();
 
 router.get("/", (req, res) => {
     const { page } = req.query;
     paginate(User, page, {
-        order: [["id","DESC"]]
+        order: [["id", "DESC"]]
     })
-    .then(users => res.json(users))
-    .catch(err => res.json(err));
+        .then(users => res.json(users))
+        .catch(err => res.status(500).json(err));
 });
 
 router.get("/:id", (req, res) => {
     User.findByPk(req.params.id)
-    .then(user => res.json(user))
-    .catch(err => res.json(err));
+        .then(user => res.json(user))
+        .catch(err => res.status(500).json(err));
 });
 
-router.post("/", handlingRequests(requestDataAllowed),(req, res) => {
+router.post("/", handlingRequests(requestDataAllowed), (req, res) => {
     User.create(req.body)
-    .then(user => res.json(user))
-    .catch(err => res.json(err));
+        .then(user => res.json(user))
+        .catch(err => res.status(500).json(err));
 });
 
 router.put("/:id", handlingRequests(requestDataAllowed), (req, res) => {
@@ -32,7 +32,7 @@ router.put("/:id", handlingRequests(requestDataAllowed), (req, res) => {
             id: req.params.id
         }
     }).then(user => res.json(user))
-    .catch(err => res.json(err));
+        .catch(err => res.status(500).json(err));
 
 });
 
@@ -42,7 +42,7 @@ router.delete("/:id", (req, res) => {
             id: req.params.id
         }
     }).then(user => res.json(user))
-    .catch(err => res.json(err));
+        .catch(err => res.status(500).json(err));
 })
 
 module.exports = router;
