@@ -10,20 +10,20 @@ router.get("/", (req, res) => {
     paginate(Project, page, {
         order: [["id", "DESC"]]
     })
-    .then(projects => res.json(projects))
-    .catch(err => res.json(err));
+        .then(projects => res.json(projects))
+        .catch(err => res.status(500).json(err));
 });
 
 router.get("/:id", (req, res) => {
     Project.findByPk(req.params.id)
-    .then(project => res.json(project))
-    .catch(err => res.json(err));
+        .then(project => res.json(project))
+        .catch(err => res.status(500).json(err));
 });
 
 router.post("/", handlingRequests(requestDataAllowed), (req, res) => {
     Project.create(req.body)
-    .then(project => res.json(project))
-    .catch(err => res.json(err));
+        .then(project => res.json(project))
+        .catch(err => res.status(500).json(err));
 });
 
 router.put("/:id", handlingRequests(requestDataAllowed), (req, res) => {
@@ -32,7 +32,7 @@ router.put("/:id", handlingRequests(requestDataAllowed), (req, res) => {
             id: req.params.id
         }
     }).then(project => res.json(project))
-    .catch(err => res.json(err));
+        .catch(err => res.status(500).json(err));
 });
 
 router.delete("/:id", (req, res) => {
@@ -41,7 +41,7 @@ router.delete("/:id", (req, res) => {
             id: req.params.id
         }
     }).then(project => res.json(project))
-    .catch(err => res.json(err));
+        .catch(err => res.status(500).json(err));
 });
 
 module.exports = router;
