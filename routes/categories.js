@@ -10,20 +10,20 @@ router.get("/", (req, res) => {
     paginate(Category, page, {
         order: [["id", "DESC"]]
     })
-    .then(categories => res.json(categories))
-    .catch(err => res.json(err));
+        .then(categories => res.json(categories))
+        .catch(err => res.status(500).json(err));
 });
 
 router.get("/:id", (req, res) => {
     Category.findByPk(req.params.id)
-    .then(category => res.json(category))
-    .catch(err => res.json(err));
+        .then(category => res.json(category))
+        .catch(err => res.status(500).json(err));
 });
 
 router.post("/", handlingRequests(requestDataAllowed), (req, res) => {
     Category.create(req.body)
-    .then(category => res.json(category))
-    .catch(err => res.json(err));
+        .then(category => res.json(category))
+        .catch(err => res.status(500).json(err));
 });
 
 router.put("/:id", handlingRequests(requestDataAllowed), (req, res) => {
@@ -32,7 +32,7 @@ router.put("/:id", handlingRequests(requestDataAllowed), (req, res) => {
             id: req.params.id
         }
     }).then(category => res.json(category))
-    .catch(err => res.json(err));
+        .catch(err => res.status(500).json(err));
 });
 
 router.delete("/:id", (req, res) => {
@@ -41,7 +41,7 @@ router.delete("/:id", (req, res) => {
             id: req.params.id
         }
     }).then(category => res.json(category))
-    .catch(err => res.json(err));
+        .catch(err => res.status(500).json(err));
 });
 
 module.exports = router;
