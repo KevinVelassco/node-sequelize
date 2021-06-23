@@ -10,20 +10,20 @@ router.get("/", (req, res) => {
     paginate(Task, page, {
         order: [["id", "DESC"]]
     })
-    .then(tasks => res.json(tasks))
-    .catch(err => res.json(err));
+        .then(tasks => res.json(tasks))
+        .catch(err => res.status(500).json(err));
 });
 
 router.get("/:id", (req, res) => {
     Task.findByPk(req.params.id)
-    .then(task => res.json(task))
-    .catch(err => res.json(err));
+        .then(task => res.json(task))
+        .catch(err => res.status(500).json(err));
 });
 
 router.post("/", handlingRequests(requestDataAllowed), (req, res) => {
     Task.create(req.body)
-    .then(task => res.json(task))
-    .catch(err => res.json(err));
+        .then(task => res.json(task))
+        .catch(err => res.status(500).json(err));
 });
 
 router.put("/:id", handlingRequests(requestDataAllowed), (req, res) => {
@@ -32,7 +32,7 @@ router.put("/:id", handlingRequests(requestDataAllowed), (req, res) => {
             id: req.params.id
         }
     }).then(task => res.json(task))
-    .catch(err => res.json(err));
+        .catch(err => res.status(500).json(err));
 });
 
 router.delete("/:id", (req, res) => {
@@ -41,7 +41,7 @@ router.delete("/:id", (req, res) => {
             id: req.params.id
         }
     }).then(task => res.json(task))
-    .catch(err => res.json(err));
+        .catch(err => res.status(500).json(err));
 });
 
 module.exports = router;
